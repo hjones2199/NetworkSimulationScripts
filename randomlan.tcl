@@ -46,8 +46,8 @@ for {set i 0} {$i < $numNodes} {incr i} {
     $ns attach-agent $n($i) $udp($i)
     # add cbr traffic on every udp
     set cbr($i) [new Application/Traffic/CBR]
-    $cbr($i) set packetSize_ 500
-    $cbr($i) set interval_ 0.005
+    $cbr($i) set packetSize_ 1000
+    $cbr($i) set interval_ 0.015
     $cbr($i) attach-agent $udp($i)
     #create null receiver agents on every node
     set null($i) [new Agent/Null]
