@@ -21,6 +21,11 @@ proc finish {} {
 #configurable variables
 set numNodes 60
 set runtime 5
+set num [new RandomVariable/Normal]
+$num set max_ 60
+$num set min_ 0
+$num set avg_ 30
+
 
 #make the nodes
 for {set i 0} {$i < $numNodes} {incr i} {
@@ -28,10 +33,10 @@ for {set i 0} {$i < $numNodes} {incr i} {
 }
 #connect the nodes with a ring topography
 for {set i 0} {$i < $numNodes} {incr i} {
-    set num [new RandomVariable/Normal]
-    $num set max_ 60
-    $num set min_ 0
-    $ns duplex-link $n($i) $n($num) 1Mb 10ms DropTail
+#    set num [new RandomVariable/Normal]
+#    $num set max_ 60
+#    $num set min_ 0
+    $ns duplex-link $n($i) $n([expr int([$num value])]) 1Mb 10ms DropTail
 }
 
 for {set i 0} {$i < $numNodes} {incr i} {
