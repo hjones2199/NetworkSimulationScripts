@@ -24,7 +24,7 @@ set runtime 100
 set num [new RandomVariable/Normal]
 $num set max_ 60
 $num set min_ 0
-$num set avg_ 30
+$num set avg_ 17
 
 
 
