@@ -1,7 +1,9 @@
 ##### Ring topography Simulator #####
 set ns [new Simulator]
 
+set f [open out.tr w]
 set nf [open out.nam w]
+$ns trace-all $f
 $ns namtrace-all $nf
 
 #get a random integer
