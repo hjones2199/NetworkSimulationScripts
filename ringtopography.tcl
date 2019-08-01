@@ -1,3 +1,4 @@
+##### Ring topography Simulator #####
 set ns [new Simulator]
 
 set nf [open out.nam w]
