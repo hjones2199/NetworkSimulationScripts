@@ -13,11 +13,18 @@ set val(ifq) Queue/DropTail/PriQueue ;
 set val(ll) LL;
 set val(ant) Antenna/OmniAntenna ;
 set val(ifqlen) 30 ;
-set val(nn) 30 ;
+set val(nn) 60 ;
 set val(rp) AODV ;
 set val(x) 300 ;
 set val(y) 300 ;
 set val(stop) 50 ;
+
+#RNG with normal distribution
+set num [new RandomVariable/Normal]
+$num set max_ 60
+$num set min_ 0
+$num set avg_ 17
+
 
 set ns [new Simulator]
 
@@ -177,6 +184,58 @@ $node_(29) set X_ 290.0
 $node_(29) set Y_ 210.0
 $node_(29) set Z_ 0.0
 
+$node_(30) set X_ 150.0
+$node_(30) set Y_ 29.0
+$node_(30) set Z_ 0.0
+
+$node_(31) set X_ 200
+$node_(31) set Y_ 212.0
+$node_(31) set Z_ 0.0
+
+$node_(32) set X_ 190.0
+$node_(32) set Y_ 110.0
+$node_(32) set Z_ 0.0
+
+$node_(33) set X_ 221.0
+$node_(33) set Y_ 45.0
+$node_(33) set Z_ 0.0
+
+$node_(34) set X_ 290.0
+$node_(34) set Y_ 210.0
+$node_(34) set Z_ 0.0
+
+$node_(35) set X_ 44.0
+$node_(35) set Y_ 245.0
+$node_(35) set Z_ 0.0
+
+$node_(36) set X_ 184.0
+$node_(36) set Y_ 96.0
+$node_(36) set Z_ 0.0
+
+$node_(37) set X_ 200.0
+$node_(37) set Y_ 110.0
+$node_(37) set Z_ 0.0
+
+$node_(38) set X_ 61.0
+$node_(38) set Y_ 119.0
+$node_(38) set Z_ 0.0
+
+$node_(39) set X_ 100.0
+$node_(39) set Y_ 176.0
+$node_(39) set Z_ 0.0
+
+$node_(40) set X_ 65.0
+$node_(40) set Y_ 230.0
+$node_(40) set Z_ 0.0
+
+$node_(41) set X_ 95.0
+$node_(41) set Y_ 96.0
+$node_(41) set Z_ 0.0
+
+$node_(42) set X_ 151.0
+$node_(42) set Y_ 170.0
+$node_(42) set Z_ 0.0
+
 
 $ns at 10.0 "$node_(4) setdest 140.0 80.0 8.0"
 $ns at 10.0 "$node_(8) setdest 125.0 100.0 8.0"
@@ -203,6 +262,30 @@ for {set i 0} {$i < $val(nn) } {incr i} {
 
 for {set i 0} {$i < $val(nn) } {incr i} {
  $ns at $val(stop) "$node_($i) reset"
+}
+
+##CHANGE 42
+for {set i 0} {$i < 42} {incr i} {
+    #create udp agent on every node
+    set udp($i) [new Agent/UDP]
+    $ns attach-agent $node_($i) $udp($i)
+    #attach cbr traffic to every udp
+    set cbr($i) [new Application/Traffic/CBR]
+    $cbr($i) set packetSize_ 1000
+    $cbr($i) set interval_ 0.015
+    $cbr($i) attach-agent $udp($i)
+    #create null receiver agents on every node
+    set null($i) [new Agent/Null]
+    $ns attach-agent $node_($i) $null($i)
+    
+}
+
+for {set i 0} {$i < 42} {incr i} {
+    $ns connect $udp($i) $null([expr int([$num value])])
+}
+for {set i 0} {$i < 42}  {incr i} {
+    $ns at $i "$cbr($i) start"
+    $ns at $val(stop) "stop"
 }
 
 $ns at $val(stop) "stop"
