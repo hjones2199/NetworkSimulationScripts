@@ -21,7 +21,7 @@ set val(stop) 50 ;
 
 set ns [new Simulator]
 
-set tracefd [open wrls2.1.tr w]
+set tracefd [open wirelessnet.tr w]
 
 set winFile [open CwMaodv_30 w]
 

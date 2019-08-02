@@ -74,6 +74,7 @@ for {set i 0} {$i < $numNodes} {incr i} {
 #$ns at 3 "$cbr(55) start"
 #$ns at 5 "$cbr(55) stop"
 
+
 for {set i 0} {$i < $numNodes} {incr i} {
     $ns connect $udp($i) $null([expr int([$num value])])
 }
