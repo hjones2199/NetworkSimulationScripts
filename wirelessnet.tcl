@@ -236,6 +236,78 @@ $node_(42) set X_ 151.0
 $node_(42) set Y_ 170.0
 $node_(42) set Z_ 0.0
 
+$node_(43) set X_ 157.0
+$node_(43) set Y_ 172.0
+$node_(43) set Z_ 0.0
+
+$node_(44) set X_ 66.0
+$node_(44) set Y_ 177.0
+$node_(44) set Z_ 0.0
+
+$node_(45) set X_ 144.0
+$node_(45) set Y_ 157.0
+$node_(45) set Z_ 0.0
+
+$node_(46) set X_ 77.0
+$node_(46) set Y_ 20.0
+$node_(46) set Z_ 0.0
+
+$node_(47) set X_ 123.0
+$node_(47) set Y_ 82.0
+$node_(47) set Z_ 0.0
+
+$node_(48) set X_ 222.0
+$node_(48) set Y_ 168.0
+$node_(48) set Z_ 0.0
+
+$node_(49) set X_ 297.0
+$node_(49) set Y_ 213.0
+$node_(49) set Z_ 0.0
+
+$node_(50) set X_ 202.0
+$node_(50) set Y_ 144.0
+$node_(50) set Z_ 0.0
+
+$node_(51) set X_ 252.0
+$node_(51) set Y_ 104.0
+$node_(51) set Z_ 0.0
+
+$node_(52) set X_ 113.0
+$node_(52) set Y_ 37.0
+$node_(52) set Z_ 0.0
+
+$node_(53) set X_ 41.0
+$node_(53) set Y_ 147.0
+$node_(53) set Z_ 0.0
+
+$node_(54) set X_ 182.0
+$node_(54) set Y_ 222.0
+$node_(54) set Z_ 0.0
+
+$node_(55) set X_ 63.0
+$node_(55) set Y_ 121.0
+$node_(55) set Z_ 0.0
+
+$node_(56) set X_ 123.0
+$node_(56) set Y_ 241.0
+$node_(56) set Z_ 0.0
+
+$node_(57) set X_ 111.0
+$node_(57) set Y_ 222.0
+$node_(57) set Z_ 0.0
+
+$node_(58) set X_ 72.0
+$node_(58) set Y_ 14.0
+$node_(58) set Z_ 0.0
+
+$node_(59) set X_ 157.0
+$node_(59) set Y_ 133.0
+$node_(59) set Z_ 0.0
+
+$node_(60) set X_ 146.0
+$node_(60) set Y_ 13.0
+$node_(60) set Z_ 0.0
+
 
 $ns at 10.0 "$node_(4) setdest 140.0 80.0 8.0"
 $ns at 10.0 "$node_(8) setdest 125.0 100.0 8.0"
