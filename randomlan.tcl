@@ -6,11 +6,6 @@ set nf [open out.nam w]
 $ns trace-all $f
 $ns namtrace-all $nf
 
-#get a random integer
-proc random_int { upper_limit } {
-    return [expr int(rand() * $upper_limit + 1)]
-}
-
 #cleanup and run gui
 proc finish {} {
         global ns nf
@@ -34,11 +29,22 @@ $num set avg_ 17
 for {set i 0} {$i < $numNodes} {incr i} {
     set n($i) [$ns node]
 }
-#connect the nodes with a ring topography
+
+#add the nodes to a csma/cd lan
+#for {set i 0} {$i < $numNodes} {incr i} {
+#    lappend listOfNodes $n($i)
+#}
+#set lan [$ns newLan $listOfNodes 10Mb 1ms LL Queue/DropTail MAC/Csma/Cd Channel]
+# Configure for ForeignAgent and HomeAgent nodes
+$ns node-config -mobileIP ON \
+                 -wiredRouting ON \
+		 -agentTrace ON \
+                 -routerTrace OFF \
+                 -macTrace OFF 
+
+
+#connect the nodes with a normal distribution topography
 for {set i 0} {$i < $numNodes} {incr i} {
-#    set num [new RandomVariable/Normal]
-#    $num set max_ 60
-#    $num set min_ 0
     $ns duplex-link $n($i) $n([expr int([$num value])]) 1Mb 10ms DropTail
 }
 
