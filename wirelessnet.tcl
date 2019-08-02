@@ -304,11 +304,6 @@ $node_(59) set X_ 157.0
 $node_(59) set Y_ 133.0
 $node_(59) set Z_ 0.0
 
-$node_(60) set X_ 146.0
-$node_(60) set Y_ 13.0
-$node_(60) set Z_ 0.0
-
-
 $ns at 10.0 "$node_(4) setdest 140.0 80.0 8.0"
 $ns at 10.0 "$node_(8) setdest 125.0 100.0 8.0"
 $ns at 10.0 "$node_(10) setdest 190.0 160.0 8.0"
@@ -337,7 +332,7 @@ for {set i 0} {$i < $val(nn) } {incr i} {
 }
 
 ##CHANGE 42
-for {set i 0} {$i < 42} {incr i} {
+for {set i 0} {$i < 60} {incr i} {
     #create udp agent on every node
     set udp($i) [new Agent/UDP]
     $ns attach-agent $node_($i) $udp($i)
@@ -352,10 +347,10 @@ for {set i 0} {$i < 42} {incr i} {
     
 }
 
-for {set i 0} {$i < 42} {incr i} {
+for {set i 0} {$i < 60} {incr i} {
     $ns connect $udp($i) $null([expr int([$num value])])
 }
-for {set i 0} {$i < 42}  {incr i} {
+for {set i 0} {$i < 60}  {incr i} {
     $ns at $i "$cbr($i) start"
     $ns at $val(stop) "stop"
 }
